@@ -33,6 +33,10 @@
 extern "C" {
 #endif 
 
+#include "Platform.h"
+#if PL_CONFIG_HAS_TIMER
+	#include "Timer.h"
+#endif
 
 /* User includes (#include below this line is not maintained by Processor Expert) */
 /*
@@ -89,6 +93,43 @@ void QuadInt_OnInterrupt(void)
 ** ===================================================================
 */
 void TI1_OnInterrupt(void)
+{
+  /* Write your code here ... */
+	TMR_OnInterrupt();
+}
+
+/*
+** ===================================================================
+**     Event       :  Cpu_OnBusFault (module Events)
+**
+**     Component   :  Cpu [MK22FN1M0LK12]
+*/
+/*!
+**     @brief
+**         This event is called when the Bus Fault exception had
+**         occurred. This event is automatically enabled when the [Bus
+**         Fault] property is set to 'Enabled'.
+*/
+/* ===================================================================*/
+void Cpu_OnBusFault(void)
+{
+  /* Write your code here ... */
+}
+
+/*
+** ===================================================================
+**     Event       :  Cpu_OnUsageFault (module Events)
+**
+**     Component   :  Cpu [MK22FN1M0LK12]
+*/
+/*!
+**     @brief
+**         This event is called when the Usage Fault exception had
+**         occurred. This event is automatically enabled when the
+**         [Usage Fault] property is set to 'Enabled'.
+*/
+/* ===================================================================*/
+void Cpu_OnUsageFault(void)
 {
   /* Write your code here ... */
 }

@@ -395,7 +395,8 @@ static void ShellTask(void *pvParameters) {
 
 void SHELL_Init(void) {
   SHELL_val = 0;
-  CLS1_SetStdio(SHELL_GetStdio()); /* set default standard I/O to RTT */
+  CLS1_SetStdio(RTT1_GetStdio());
+  //CLS1_SetStdio(SHELL_GetStdio()); /* set default standard I/O to RTT */
 #if PL_CONFIG_HAS_RTOS
   if (xTaskCreate(ShellTask, "Shell", 900/sizeof(StackType_t), NULL, tskIDLE_PRIORITY+1, NULL) != pdPASS) {
     for(;;){} /* error */

@@ -94,8 +94,34 @@ void APP_EventHandler(EVNT_Handle event) {
     break;
 #if PL_CONFIG_NOF_KEYS>=1
   case EVNT_SW1_PRESSED:
-    BtnMsg(1, "pressed");
-     break;
+	  LED1_Neg();
+	  //BUZ_PlayTune(BUZ_TUNE_BUTTON);
+	  BUZ_Beep(500,100);
+	  BtnMsg(1, "pressed");
+  /*case EVNT_SW2_PRESSED:
+  	  LED1_Neg();
+  	  BtnMsg(2, "pressed");
+       break;
+  case EVNT_SW3_PRESSED:
+  	  LED1_Neg();
+  	  BtnMsg(3, "pressed");
+       break;
+  case EVNT_SW4_PRESSED:
+  	  LED1_Neg();
+  	  BtnMsg(4, "pressed");
+       break;
+  case EVNT_SW5_PRESSED:
+  	  LED1_Neg();
+  	  BtnMsg(5, "pressed");
+       break;
+  case EVNT_SW6_PRESSED:
+  	  LED1_Neg();
+  	  BtnMsg(6, "pressed");
+       break;
+  case EVNT_SW7_PRESSED:
+	  LED1_Neg();
+	  BtnMsg(7, "pressed");
+         break;*/
 #endif
     default:
       break;
@@ -184,7 +210,7 @@ void APP_Start(void) {
   APP_AdoptToHardware();
   __asm volatile("cpsie i"); /* enable interrupts */
   for(;;) {
+	  EVNT_HandleEvent(APP_EventHandler,TRUE);
+	  KEY_scan();
   }
 }
-
-

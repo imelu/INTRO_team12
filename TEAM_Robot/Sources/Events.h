@@ -157,6 +157,36 @@ void QuadInt_OnInterrupt(void);
 */
 void TI1_OnInterrupt(void);
 
+/*
+** ===================================================================
+**     Event       :  Cpu_OnBusFault (module Events)
+**
+**     Component   :  Cpu [MK22FN1M0LK12]
+*/
+/*!
+**     @brief
+**         This event is called when the Bus Fault exception had
+**         occurred. This event is automatically enabled when the [Bus
+**         Fault] property is set to 'Enabled'.
+*/
+/* ===================================================================*/
+void Cpu_OnBusFault(void);
+
+/*
+** ===================================================================
+**     Event       :  Cpu_OnUsageFault (module Events)
+**
+**     Component   :  Cpu [MK22FN1M0LK12]
+*/
+/*!
+**     @brief
+**         This event is called when the Usage Fault exception had
+**         occurred. This event is automatically enabled when the
+**         [Usage Fault] property is set to 'Enabled'.
+*/
+/* ===================================================================*/
+void Cpu_OnUsageFault(void);
+
 /* END Events */
 
 #ifdef __cplusplus

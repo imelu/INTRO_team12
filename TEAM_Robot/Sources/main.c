@@ -26,7 +26,6 @@
 */         
 /* MODULE main */
 
-
 /* Including needed modules to compile this module/procedure */
 #include "Cpu.h"
 #include "Events.h"
@@ -107,8 +106,10 @@
 #include "IO_Map.h"
 /* User includes (#include below this line is not maintained by Processor Expert) */
 #include "Application.h"
+#include "LED.h"
 
 void (*f)(void) = NULL;
+
 int i;
 
 /*lint -save  -e970 Disable MISRA rule (6.3) checking. */
