@@ -90,7 +90,7 @@ bool EVNT_EventIsSetAutoClear(EVNT_Handle event);
  * \param[in] callback Callback routine to be called. The event handle is passed as argument to the callback.
  * \param[in] clearEvent If TRUE, it will clear the event in the EVNT_HandleEvent(), otherwise not.
  */
-void EVNT_HandleEvent(void (*callback)(EVNT_Handle), bool clearEvent);
+bool EVNT_HandleEvent(void (*callback)(EVNT_Handle), bool clearEvent);
 
 /*! \brief Event module initialization */
 void EVNT_Init(void);

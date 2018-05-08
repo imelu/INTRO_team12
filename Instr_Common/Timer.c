@@ -34,6 +34,10 @@ void TMR_OnInterrupt(void) {
 #if PL_CONFIG_HAS_TRIGGER
   TRG_AddTick();
 #endif
+  TMOUT1_AddTick(); /* needed for USB timeout */
+#if PL_CONFIG_HAS_MOTOR_TACHO
+  TACHO_Sample();
+#endif
 }
 
 void TMR_Init(void) {

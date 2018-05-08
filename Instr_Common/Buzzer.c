@@ -32,6 +32,7 @@ static const BUZ_Tune MelodyWelcome[] =
 { /* freq, ms */
     {300,500},
     {500,200},
+#if 0
     {300,100},
     {200,300},
     {500,400},
@@ -65,6 +66,7 @@ static const BUZ_Tune MelodyWelcome[] =
     {0,100},
     {500,600},
     {0,100},
+#endif
 };
 
 static const BUZ_Tune MelodyButton[] =
@@ -143,7 +145,7 @@ uint8_t BUZ_PlayTune(BUZ_Tunes tune) {
 static uint8_t BUZ_PrintHelp(const CLS1_StdIOType *io) {
   CLS1_SendHelpStr((unsigned char*)"buzzer", (unsigned char*)"Group of buzzer commands\r\n", io->stdOut);
   CLS1_SendHelpStr((unsigned char*)"  help|status", (unsigned char*)"Shows radio help or status\r\n", io->stdOut);
-  CLS1_SendHelpStr((unsigned char*)"  buz <freq> <time>", (unsigned char*)"Beep for time (ms) and frequency (kHz)\r\n", io->stdOut);
+  CLS1_SendHelpStr((unsigned char*)"  buz <freq> <time>", (unsigned char*)"Beep for time (ms) and frequency (Hz)\r\n", io->stdOut);
   CLS1_SendHelpStr((unsigned char*)"  play tune", (unsigned char*)"Play tune\r\n", io->stdOut);
   return ERR_OK;
 }

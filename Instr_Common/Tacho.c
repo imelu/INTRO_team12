@@ -18,9 +18,9 @@
 #include "FRTOS1.h"
 #include "Timer.h"
 
-#define TACHO_SAMPLE_PERIOD_MS (100)
+#define TACHO_SAMPLE_PERIOD_MS (10)
   /*!< \todo speed sample period in ms. Make sure that speed is sampled at the given rate. */
-#define NOF_HISTORY (2U+1U)
+#define NOF_HISTORY (8U+1U)
   /*!< number of samples for speed calculation (>0):the more, the better, but the slower. */
 
 /*! \todo Check types for position: code shall use the same type as the quadrature counter!!!!! */
@@ -116,7 +116,7 @@ void TACHO_Sample(void) {
  * \param io I/O channel to use for printing status
  */
 static void TACHO_PrintStatus(const CLS1_StdIOType *io) {
-  TACHO_CalcSpeed(); /*! \todo only temporary until this is done periodically */
+ // TACHO_CalcSpeed(); /*! \todo only temporary until this is done periodically */
   CLS1_SendStatusStr((unsigned char*)"Tacho", (unsigned char*)"\r\n", io->stdOut);
   CLS1_SendStatusStr((unsigned char*)"  L speed", (unsigned char*)"", io->stdOut);
   CLS1_SendNum32s(TACHO_GetSpeed(TRUE), io->stdOut);

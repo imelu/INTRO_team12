@@ -27,6 +27,8 @@ typedef enum {
 
 REF_LineKind REF_GetLineKind(void);
 
+bool REF_IsCalibrated(void);
+
 void REF_GetSensorValues(uint16_t *values, int nofValues);
 
 #if PL_CONFIG_HAS_SHELL

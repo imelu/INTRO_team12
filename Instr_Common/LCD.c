@@ -255,7 +255,7 @@ static const LCDMenu_MenuItem menus[] =
       {LCD_MENU_ID_TETRIS,                    2,   1,   LCD_MENU_ID_MAIN,         LCD_MENU_ID_NONE,                 "Tetris",     GamesMenuHandler,             LCDMENU_MENU_FLAGS_NONE},
       {LCD_MENU_ID_PONG,                      2,   2,   LCD_MENU_ID_MAIN,         LCD_MENU_ID_NONE,                 "Pong",       GamesMenuHandler,             LCDMENU_MENU_FLAGS_NONE},
 #endif
-#if 1
+#if PL_CONFIG_HAS_RADIO
     {LCD_MENU_ID_ROBOT,                       0,   2,   LCD_MENU_ID_NONE,         LCD_MENU_ID_SUMO_START,           "Robot",        NULL,                       LCDMENU_MENU_FLAGS_NONE},
       {LCD_MENU_ID_SUMO_START,                4,   0,   LCD_MENU_ID_ROBOT,        LCD_MENU_ID_NONE,                 "Start",        RobotRemoteMenuHandler,     LCDMENU_MENU_FLAGS_NONE},
       {LCD_MENU_ID_SUMO_STOP,                 4,   1,   LCD_MENU_ID_ROBOT,        LCD_MENU_ID_NONE,                 "Stop",         RobotRemoteMenuHandler,     LCDMENU_MENU_FLAGS_NONE},

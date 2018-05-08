@@ -71,7 +71,7 @@ bool EVNT_EventIsSetAutoClear(EVNT_Handle event) {
   return res;
 }
 
-void EVNT_HandleEvent(void (*callback)(EVNT_Handle), bool clearEvent) {
+bool EVNT_HandleEvent(void (*callback)(EVNT_Handle), bool clearEvent) {
    /* Handle the one with the highest priority. Zero is the event with the highest priority. */
    EVNT_Handle event;
    CS1_CriticalVariable();
@@ -93,8 +93,9 @@ void EVNT_HandleEvent(void (*callback)(EVNT_Handle), bool clearEvent) {
      /* Note: if the callback sets the event, we will get out of the loop.
       * We will catch it by the next iteration.
       */
+     return TRUE;
    }
-
+  return FALSE;
 }
 
 void EVNT_Init(void) {

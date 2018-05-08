@@ -11,17 +11,21 @@
 #include "Application.h"
 #include "LED.h"
 
+#if 0
 static void Blinky(void *param) {
   for(;;) {
     vTaskDelay(pdMS_TO_TICKS(50));
   }
 }
+#endif
 
 void RTOS_Init(void) {
   /*! \todo Create tasks here */
-  if (xTaskCreate(Blinky, "Blinky", 100/sizeof(StackType_t), NULL, tskIDLE_PRIORITY+1, NULL) != pdPASS) {
+#if 0
+  if (xTaskCreate(Blinky, "notBlinky", 300/sizeof(StackType_t), NULL, tskIDLE_PRIORITY+1, NULL) != pdPASS) {
     for(;;){} /* error */
   }
+#endif
 }
 
 void RTOS_Deinit(void) {
