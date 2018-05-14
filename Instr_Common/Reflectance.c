@@ -131,6 +131,10 @@ void REF_CalibrateStartStop(void) {
 }
 #endif
 
+bool REF_IsCalibrated(void){
+	return refState==REF_STATE_READY;
+}
+
 /*!
  * \brief Measures the time until the sensor discharges
  * \param raw Array to store the raw values.
@@ -307,13 +311,13 @@ static REF_LineKind ReadLineKind(SensorTimeType val[REF_NOF_SENSORS]) {
   #define MIN_LEFT_RIGHT_SUM   ((REF_NOF_SENSORS*1000)/4) /* 1/4 of full sensor values */
 
   if (outerLeft>=REF_MIN_LINE_VAL && outerRight<REF_MIN_LINE_VAL && sumLeft>MIN_LEFT_RIGHT_SUM && sumRight<MIN_LEFT_RIGHT_SUM) {
-#if 1 || PL_APP_LINE_MAZE
+#if 0 || PL_APP_LINE_MAZE
     return REF_LINE_LEFT; /* line going to the left side */
 #else
     return REF_LINE_STRAIGHT;
 #endif
   } else if (outerLeft<REF_MIN_LINE_VAL && outerRight>=REF_MIN_LINE_VAL && sumRight>MIN_LEFT_RIGHT_SUM && sumLeft<MIN_LEFT_RIGHT_SUM) {
-#if 1 || PL_APP_LINE_MAZE
+#if 0 || PL_APP_LINE_MAZE
     return REF_LINE_RIGHT; /* line going to the right side */
 #else
     return REF_LINE_STRAIGHT;

@@ -80,6 +80,7 @@ static bool FollowSegment(void) {
     PID_Line(currLine, REF_MIDDLE_LINE_VALUE); /* move along the line */
     return TRUE;
   } else {
+
     return FALSE; /* intersection/change of direction or not on line any more */
   }
 }
@@ -99,6 +100,23 @@ static void StateMachine(void) {
       }
       break;
 
+#if 1
+
+    case STATE_TURN:
+      lineKind = REF_GetLineKind();
+      if (lineKind==REF_LINE_NONE) {
+        LF_currState = STATE_FINISHED;
+      } if (lineKind==REF_LINE_FULL) {
+        TURN_Turn(TURN_LEFT180, NULL);
+        DRV_SetMode(DRV_MODE_NONE); /* disable position mode */
+        LF_currState = STATE_FOLLOW_SEGMENT;
+      } else {
+        LF_currState = STATE_STOP;
+      }
+      break;
+
+#else
+
     case STATE_TURN:
       lineKind = REF_GetLineKind();
       if (lineKind==REF_LINE_FULL) {
@@ -111,6 +129,8 @@ static void StateMachine(void) {
         LF_currState = STATE_STOP;
       }
       break;
+
+#endif
 
     case STATE_FINISHED:
       SHELL_SendString("Finished!\r\n");

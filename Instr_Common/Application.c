@@ -132,6 +132,10 @@ void APP_EventHandler(EVNT_Handle event) {
 #if PL_CONFIG_NOF_KEYS>=1
   case EVNT_SW1_PRESSED:
     BtnMsg(1, "pressed");
+    if (REF_IsCalibrated()){
+    	WAIT1_WaitOSms(1000);
+    	LF_StartFollowing();
+    }
 #if PL_CONFIG_HAS_BUZZER
      BUZ_Beep(500, 500);
 #endif
